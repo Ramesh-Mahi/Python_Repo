@@ -1,0 +1,27 @@
+if __name__ == '__main__':
+    total = []
+    list1 = []
+    for i in range(int(input())):
+        name = input()
+        score = float(input())
+        list1.append(name)
+        list1.append(score)
+        total.append(list1)
+        list1 = []
+
+total.sort(key=lambda x: x[1])
+low = []
+for r in range(0, len(total) - 1):
+    if total[r][1] == total[r + 1][1]:
+        continue
+    else:
+        low.append(total[r + 1])
+        for i in range(r + 1, len(total) - 1):
+            if total[i][1] == total[i + 1][1]:
+                low.append(total[i + 1])
+            else:
+                break
+        break
+low.sort()
+for i, j in low:
+    print(i)
